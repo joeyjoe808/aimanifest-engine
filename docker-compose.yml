@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ai-manifest-engine:
+    build: .
+    container_name: ai-manifest-engine
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    command: npm run start

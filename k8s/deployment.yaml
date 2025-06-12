@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-manifest-engine
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ai-manifest
+  template:
+    metadata:
+      labels:
+        app: ai-manifest
+    spec:
+      containers:
+        - name: engine
+          image: your-dockerhub/ai-manifest-engine:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: CLAUDE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ai-secrets
+                  key: CLAUDE_API_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-engine-service
+spec:
+  selector:
+    app: ai-manifest
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer

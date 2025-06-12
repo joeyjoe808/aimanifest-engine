@@ -1,0 +1,8 @@
+{
+  "agents": {
+    "BuilderBot": { "inputs": ["manifest"], "outputs": ["code"], "dependencies": ["QABot"] },
+    "QABot": { "inputs": ["code"], "outputs": ["review", "tests"], "dependencies": ["UXBot"] },
+    "UXBot": { "inputs": ["code"], "outputs": ["ui_review"] }
+  },
+  "flow": ["BuilderBot", "QABot", "UXBot"]
+}

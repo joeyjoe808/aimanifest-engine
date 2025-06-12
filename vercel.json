@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "web-dashboard/server.ts", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/web-dashboard/server.ts" }
+  ]
+}

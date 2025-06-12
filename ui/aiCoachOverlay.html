@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>AI Coach</title></head>
+<body>
+  <div id="coach" style="position:fixed;bottom:10px;right:10px;width:300px;border:1px solid #ccc;padding:10px;background:#fff;">
+    <h4>🧠 AI Coach</h4>
+    <p id="tip">Loading tip...</p>
+    <button onclick="next()">Next Tip</button>
+  </div>
+  <script>
+    const tips = [
+      "You can run workflows by selecting agents in Persona UI.",
+      "BuilderBot generates React+TS code from manifests.",
+      "QABot adds tests automatically after builds complete.",
+      "Use Mission Control to monitor everything live."
+    ]
+    let index = 0
+    function next() {
+      index = (index + 1) % tips.length
+      document.getElementById("tip").textContent = tips[index]
+    }
+    next()
+  </script>
+</body>
+</html>

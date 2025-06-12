@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Persona Selector</title></head>
+<body>
+  <h1>Choose AI Personas</h1>
+  <label><input type="checkbox" value="BuilderBot" checked> BuilderBot</label><br>
+  <label><input type="checkbox" value="QABot" checked> QABot</label><br>
+  <label><input type="checkbox" value="UXBot"> UXBot</label><br>
+  <button onclick="run()">Run Workflow</button>
+  <pre id="result"></pre>
+  <script>
+    async function run() {
+      const bots = [...document.querySelectorAll('input:checked')].map(b => b.value)
+      const res = await fetch('http://localhost:3000/run-workflow', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ workflow: bots })
+      })
+      const data = await res.text()
+      document.getElementById('result').innerText = data
+    }
+  </script>
+</body>
+</html>

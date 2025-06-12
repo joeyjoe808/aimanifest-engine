@@ -1,0 +1,20 @@
+name: Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Generate PR diff
+      run: git diff origin/main > diff.txt
+
+    - name: Run Claude PR Review
+      run: |
+        echo "::notice:: 🚀 Claude PR review initiated"
+        npx ts-node review/claudePRReview.ts < diff.txt

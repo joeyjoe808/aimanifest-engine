@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>AI Dashboard</title></head>
+<body>
+  <h1>📊 Manifest Dashboard</h1>
+  <ul id="version-list"></ul>
+  <script>
+    fetch('http://localhost:3000/versions')
+      .then(res => res.json())
+      .then(data => {
+        const ul = document.getElementById('version-list')
+        data.forEach(v => {
+          const li = document.createElement('li')
+          li.textContent = new Date(v.timestamp).toLocaleString()
+          ul.appendChild(li)
+        })
+      })
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "submitForm",
+    "label": "Submit",
+    "action": "submitForm",
+    "data": {
+      "endpoint": "/api/form/submit",
+      "method": "POST"
+    }
+  },
+  {
+    "id": "startLiveStream",
+    "label": "Go Live",
+    "action": "startLiveStream",
+    "realtime": true,
+    "socketEvent": "live:start"
+  }
+]

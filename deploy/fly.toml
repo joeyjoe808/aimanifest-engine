@@ -1,0 +1,11 @@
+app = "ai-manifest-engine"
+primary_region = "iad"
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[env]
+PORT = "3000"
+CLAUDE_API_KEY = "your-env"
+
+[build]
+builder = "heroku/buildpacks:20"

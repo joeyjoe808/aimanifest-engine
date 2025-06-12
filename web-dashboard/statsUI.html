@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Usage Stats</title></head>
+<body>
+  <h1>Platform Usage Overview</h1>
+  <div id="stats"></div>
+  <script>
+    fetch('http://localhost:3000/stats')
+      .then(res => res.json())
+      .then(data => {
+        const div = document.getElementById('stats')
+        for (const user in data) {
+          const p = document.createElement('p')
+          p.textContent = \`\${user}: \${data[user]} tokens used\`
+          div.appendChild(p)
+        }
+      })
+  </script>
+</body>
+</html>

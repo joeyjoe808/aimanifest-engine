@@ -1,0 +1,16 @@
+[
+  {
+    "id": "legalbot",
+    "name": "LegalBot",
+    "description": "Analyzes contracts and legal compliance issues",
+    "tags": ["legal", "compliance"],
+    "entry": "./marketplace/agents/legalBot.ts"
+  },
+  {
+    "id": "finbot",
+    "name": "FinBot",
+    "description": "Financial model and report generator",
+    "tags": ["finance", "analytics"],
+    "entry": "./marketplace/agents/finBot.ts"
+  }
+]

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Live Collab Chat</title></head>
+<body>
+  <div id="chat-box" style="height: 300px; overflow-y: auto;"></div>
+  <input id="chat-input" placeholder="Type..." />
+  <button onclick="send()">Send</button>
+  <script>
+    const socket = new WebSocket("ws://localhost:5000")
+    const chatBox = document.getElementById("chat-box")
+
+    socket.onmessage = (e) => {
+      const msg = document.createElement("div")
+      msg.innerText = e.data
+      chatBox.appendChild(msg)
+    }
+
+    function send() {
+      const input = document.getElementById("chat-input")
+      socket.send(input.value)
+      input.value = ""
+    }
+  </script>
+</body>
+</html>

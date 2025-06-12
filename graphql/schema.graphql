@@ -1,0 +1,13 @@
+type ManifestVersion {
+  timestamp: String
+  manifest: String
+}
+
+type Query {
+  versions: [ManifestVersion]
+  diff(oldPath: String!, newPath: String!): String
+}
+
+type Mutation {
+  runWorkflow(workflow: [String]!): String
+}

@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: AI Manifest Engine API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4002/api
+paths:
+  /manifest:
+    get:
+      summary: Get sample manifest
+      responses:
+        '200':
+          description: A JSON array of buttons
+  /docs:
+    post:
+      summary: Generate user-facing documentation from a manifest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+      responses:
+        '200':
+          description: Documentation text
+  /status:
+    get:
+      summary: Get API status
+      responses:
+        '200':
+          description: Service is up

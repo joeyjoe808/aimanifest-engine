@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Agent Partner Portal</title></head>
+<body>
+  <h1>🤝 Partner Revenue Dashboard</h1>
+  <p id="account">Connected Account ID: <span id="acctId">loading...</span></p>
+  <p id="earnings">Total Earnings: <span id="earn">loading...</span></p>
+  <script>
+    fetch('/api/partner-summary?account=acct_12345')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('acctId').textContent = data.accountId
+        document.getElementById('earn').textContent = '$' + data.earnings
+      })
+  </script>
+</body>
+</html>

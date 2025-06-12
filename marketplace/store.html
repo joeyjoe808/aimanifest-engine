@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Agent Marketplace</title></head>
+<body>
+  <h1>🛍️ Featured Agents</h1>
+  <ul id="featured"></ul>
+  <h2>🏆 Top Agents</h2>
+  <ul id="leaderboard"></ul>
+  <script>
+    fetch('/api/agents')
+      .then(res => res.json())
+      .then(data => {
+        const feat = document.getElementById('featured')
+        const lead = document.getElementById('leaderboard')
+        data.featured.forEach(a => {
+          const li = document.createElement('li')
+          li.textContent = `${a.id} — ★ ${a.rating}`
+          feat.appendChild(li)
+        })
+        data.leaderboard.forEach(a => {
+          const li = document.createElement('li')
+          li.textContent = `${a.id} — Installs: ${a.installs}`
+          lead.appendChild(li)
+        })
+      })
+  </script>
+</body>
+</html>

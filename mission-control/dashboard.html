@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Mission Control</title></head>
+<body>
+  <h1>🛰️ AI Mission Control</h1>
+  <iframe src="statsUI.html" width="100%" height="200"></iframe>
+  <iframe src="personaUI.html" width="100%" height="300"></iframe>
+  <iframe src="agentChatUI.html" width="100%" height="300"></iframe>
+  <div>
+    <h2>Live Jobs</h2>
+    <pre id="jobs"></pre>
+  </div>
+  <script>
+    async function poll() {
+      const res = await fetch("http://localhost:3000/stats")
+      const data = await res.json()
+      document.getElementById("jobs").textContent = JSON.stringify(data, null, 2)
+    }
+    setInterval(poll, 3000)
+  </script>
+</body>
+</html>
